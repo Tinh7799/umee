@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umee Uniforms – Đồng phục chuyên nghiệp cho doanh nghiệp</title>
+<meta name="description" content="Umee Uniforms – Thiết kế và sản xuất đồng phục chất lượng cao theo yêu cầu. Professional uniform design and manufacturing in Vietnam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #7F0000;
+    --burgundy-light: #9B1111;
+    --burgundy-dark: #5a0000;
+    --black: #0f0f0f;
+    --white: #ffffff;
+    --gray-100: #f8f7f5;
+    --gray-200: #ede9e3;
+    --gray-400: #9a9088;
+    --gray-600: #5c5650;
+    --gold: #c4a35a;
+    --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── UTILS ─── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 96px 0; }
+  .section-sm { padding: 64px 0; }
+  .text-burgundy { color: var(--burgundy); }
+  .text-gold { color: var(--gold); }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    background: rgba(127,0,0,0.08);
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    color: var(--black);
+  }
+  .section-sub {
+    font-size: 17px;
+    color: var(--gray-600);
+    max-width: 560px;
+    font-weight: 300;
+  }
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: var(--burgundy);
+    margin: 20px 0 32px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 30px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary {
+    background: var(--burgundy);
+    color: var(--white);
+  }
+  .btn-primary:hover {
+    background: var(--burgundy-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(127,0,0,0.3);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--burgundy);
+    border: 2px solid var(--burgundy);
+  }
+  .btn-outline:hover {
+    background: var(--burgundy);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  .btn-white {
+    background: var(--white);
+    color: var(--burgundy);
+  }
+  .btn-white:hover {
+    background: var(--gray-100);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+  }
+
+  /* ─── LANG HIDDEN ─── */
+  [lang-key] { display: none; }
+  body.vi [lang-key="vi"],
+  body.en [lang-key="en"] { display: unset; }
+  body.vi .vi-block,
+  body.en .en-block { display: block; }
+  .vi-block, .en-block { display: none; }
+  body.vi .vi-inline,
+  body.en .en-inline { display: inline; }
+  .vi-inline, .en-inline { display: none; }
+  body.vi .vi-flex,
+  body.en .en-flex { display: flex; }
+  .vi-flex, .en-flex { display: none; }
+
+  /* ─── HEADER ─── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 24px;
+    transition: all var(--transition);
+  }
+  header.scrolled {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 32px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+  }
+  .logo-text-wrap { line-height: 1; }
+  .logo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.02em;
+  }
+  .logo-sub {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+  nav { display: flex; align-items: center; gap: 6px; }
+  nav a {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all var(--transition);
+    white-space: nowrap;
+  }
+  nav a:hover { color: var(--burgundy); background: rgba(127,0,0,0.05); }
+  .header-actions { display: flex; align-items: center; gap: 12px; }
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    background: var(--gray-100);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .lang-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--gray-400);
+    transition: all var(--transition);
+  }
+  .lang-btn.active {
+    background: var(--burgundy);
+    color: var(--white);
+  }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 22px; height: 2px; background: var(--black); transition: all var(--transition); display: block; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 64px 80px 0;
+    max-width: 620px;
+    margin-left: auto;
+    padding-left: 24px;
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .hero-eyebrow span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+  }
+  .hero-line { width: 40px; height: 1px; background: var(--burgundy); }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--burgundy);
+    display: block;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--gray-600);
+    font-weight: 300;
+    margin-bottom: 44px;
+    line-height: 1.8;
+  }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 56px; }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 40px;
+    border-top: 1px solid var(--gray-200);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--burgundy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label { font-size: 12px; color: var(--gray-400); font-weight: 500; letter-spacing: 0.05em; }
+  .hero-right {
+    background: var(--gray-100);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(127,0,0,0.03) 0px, rgba(127,0,0,0.03) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(-45deg, rgba(127,0,0,0.03) 0px, rgba(127,0,0,0.03) 1px, transparent 1px, transparent 40px);
+  }
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 60px 40px;
+  }
+  .hero-logo-large {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-logo-large svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 20px 60px rgba(127,0,0,0.2));
+  }
+  .hero-caption {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  /* Floating cards */
+  .float-card {
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: floatY 4s ease-in-out infinite;
+  }
+  .float-card:nth-child(2) { animation-delay: 1s; }
+  .float-card:nth-child(3) { animation-delay: 2s; }
+  .float-card-1 { top: 20%; left: 8%; }
+  .float-card-2 { bottom: 28%; right: 6%; }
+  .float-card-3 { top: 60%; left: 5%; }
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  .float-icon { width: 36px; height: 36px; background: rgba(127,0,0,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .float-text strong { font-size: 14px; font-weight: 700; display: block; line-height: 1.2; }
+  .float-text small { font-size: 11px; color: var(--gray-400); }
+
+  /* ─── SECTION HEADER CENTER ─── */
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-header .section-sub { margin: 0 auto; }
+  .section-header .divider { margin: 20px auto 32px; }
+
+  /* ─── SERVICES/PRODUCTS STRIP ─── */
+  #products { background: var(--gray-100); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--gray-200);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .product-card {
+    background: white;
+    padding: 36px 28px;
+    transition: all var(--transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--burgundy);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+    transform-origin: left;
+  }
+  .product-card:hover::before { transform: scaleX(1); }
+  .product-card:hover { background: rgba(127,0,0,0.02); }
+  .product-card:hover .product-icon { background: var(--burgundy); color: white; }
+  .product-icon {
+    width: 52px; height: 52px;
+    background: rgba(127,0,0,0.08);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 18px;
+    transition: all var(--transition);
+  }
+  .product-name {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: var(--black);
+    line-height: 1.3;
+  }
+  .product-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; margin-bottom: 18px; }
+  .product-link {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--burgundy);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 6px;
+    transition: gap var(--transition);
+  }
+  .product-card:hover .product-link { gap: 10px; }
+
+  /* ─── WHY UMEE ─── */
+  #why { background: var(--black); color: white; }
+  #why .section-title { color: white; }
+  #why .section-sub { color: rgba(255,255,255,0.55); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .why-list { display: grid; gap: 28px; }
+  .why-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all var(--transition);
+  }
+  .why-item:hover { background: rgba(255,255,255,0.04); border-color: rgba(127,0,0,0.4); }
+  .why-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(127,0,0,0.4);
+    line-height: 1;
+    min-width: 40px;
+  }
+  .why-item:hover .why-num { color: var(--burgundy); }
+  .why-item-title { font-weight: 700; font-size: 16px; margin-bottom: 6px; color: white; }
+  .why-item-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+  .why-visual {
+    position: relative;
+    background: rgba(127,0,0,0.08);
+    border-radius: 16px;
+    padding: 48px;
+    border: 1px solid rgba(127,0,0,0.2);
+    text-align: center;
+  }
+  .why-big-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(60px, 8vw, 100px);
+    font-weight: 900;
+    color: rgba(127,0,0,0.15);
+    line-height: 1;
+    position: absolute;
+    top: 24px; right: 24px;
+    user-select: none;
+  }
+  .why-metric { padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .why-metric:last-child { border: none; }
+  .why-metric-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--burgundy);
+    line-height: 1;
+  }
+  .why-metric-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+  /* ─── PROCESS ─── */
+  #process { background: var(--gray-100); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: var(--gray-200);
+    z-index: 0;
+  }
+  .process-step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+  .step-circle {
+    width: 72px; height: 72px;
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 24px;
+    transition: all var(--transition);
+    position: relative;
+  }
+  .process-step:hover .step-circle {
+    border-color: var(--burgundy);
+    background: var(--burgundy);
+    box-shadow: 0 0 0 8px rgba(127,0,0,0.1);
+  }
+  .process-step:hover .step-circle svg path { stroke: white; }
+  .step-num {
+    position: absolute;
+    top: -6px; right: -6px;
+    width: 22px; height: 22px;
+    background: var(--burgundy);
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-title { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+  .step-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+  /* ─── INDUSTRIES ─── */
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .industry-card {
+    background: var(--gray-100);
+    border-radius: 12px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all var(--transition);
+    cursor: default;
+    border: 1px solid transparent;
+  }
+  .industry-card:hover {
+    background: white;
+    border-color: var(--gray-200);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+  }
+  .industry-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+  .industry-name { font-weight: 700; font-size: 15px; color: var(--black); }
+
+  /* ─── TESTIMONIALS ─── */
+  #testimonials { background: var(--gray-100); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+    border: 1px solid var(--gray-200);
+    transition: all var(--transition);
+  }
+  .testimonial-card:hover {
+    box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    border-color: rgba(127,0,0,0.2);
+  }
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    line-height: 0.8;
+    color: rgba(127,0,0,0.1);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .testimonial-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 14px; }
+  .author-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--burgundy);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px;
+    font-family: 'Playfair Display', serif;
+  }
+  .author-name { font-weight: 700; font-size: 14px; color: var(--black); }
+  .author-role { font-size: 12px; color: var(--gray-400); }
+  .stars { color: var(--gold); font-size: 14px; margin-bottom: 4px; }
+
+  /* ─── CLIENTS LOGO BAR ─── */
+  .clients-bar {
+    background: var(--black);
+    padding: 48px 0;
+    overflow: hidden;
+  }
+  .clients-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 32px;
+  }
+  .clients-scroll {
+    display: flex;
+    gap: 48px;
+    overflow-x: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 24px;
+  }
+  .client-logo {
+    padding: 10px 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.4);
+    white-space: nowrap;
+    transition: all var(--transition);
+  }
+  .client-logo:hover { color: white; border-color: rgba(255,255,255,0.3); }
+
+  /* ─── BLOG ─── */
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .blog-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    transition: all var(--transition);
+  }
+  .blog-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.1); transform: translateY(-4px); }
+  .blog-img {
+    height: 200px;
+    background: var(--gray-100);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+    overflow: hidden;
+    position: relative;
+  }
+  .blog-img-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(127,0,0,0.08) 0%, rgba(127,0,0,0.02) 100%);
+  }
+  .blog-tag {
+    position: absolute;
+    top: 16px; left: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--burgundy);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+  .blog-body { padding: 28px; }
+  .blog-date { font-size: 12px; color: var(--gray-400); margin-bottom: 10px; }
+  .blog-title { font-weight: 700; font-size: 17px; line-height: 1.4; color: var(--black); margin-bottom: 10px; }
+  .blog-excerpt { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 20px; }
+  .blog-read { font-size: 13px; font-weight: 700; color: var(--burgundy); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--gray-100); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .contact-item { display: flex; gap: 16px; margin-bottom: 28px; }
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: rgba(127,0,0,0.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    color: var(--burgundy);
+  }
+  .contact-label { font-size: 12px; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .contact-val { font-size: 15px; font-weight: 600; color: var(--black); }
+  .social-links { display: flex; gap: 12px; margin-top: 32px; }
+  .social-btn {
+    width: 40px; height: 40px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all var(--transition);
+    color: var(--black);
+  }
+  .social-btn:hover { background: var(--burgundy); border-color: var(--burgundy); color: white; }
+
+  /* FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 18px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--black); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 16px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 8px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    color: var(--black);
+    background: white;
+    transition: all var(--transition);
+    outline: none;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--burgundy); box-shadow: 0 0 0 3px rgba(127,0,0,0.08); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    background: var(--burgundy);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition);
+    align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--burgundy-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(127,0,0,0.3); }
+
+  /* ─── MAP PLACEHOLDER ─── */
+  .map-placeholder {
+    height: 200px;
+    background: var(--gray-200);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    color: var(--gray-400);
+    margin-top: 32px;
+    border: 2px dashed var(--gray-200);
+    flex-direction: column;
+    gap: 8px;
+  }
+  .map-placeholder span { font-size: 32px; }
+
+  /* ─── ABOUT ─── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-visual {
+    position: relative;
+    padding: 32px;
+  }
+  .about-img-main {
+    border-radius: 16px;
+    background: var(--gray-100);
+    height: 400px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px;
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-img-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(45deg, rgba(127,0,0,0.04) 0px, rgba(127,0,0,0.04) 1px, transparent 1px, transparent 32px);
+  }
+  .about-badge-float {
+    position: absolute;
+    bottom: 0; right: 0;
+    background: var(--burgundy);
+    color: white;
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 16px 48px rgba(127,0,0,0.3);
+  }
+  .about-badge-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+  }
+  .about-badge-label { font-size: 12px; font-weight: 500; opacity: 0.8; }
+  .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .value-item {
+    padding: 20px;
+    background: var(--gray-100);
+    border-radius: 12px;
+    border-left: 3px solid var(--burgundy);
+  }
+  .value-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .value-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+  /* ─── GALLERY ─── */
+  #portfolio { background: var(--gray-100); }
+  .gallery-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+  .filter-btn {
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: 1.5px solid var(--gray-200);
+    background: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    color: var(--gray-600);
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--burgundy);
+    border-color: var(--burgundy);
+    color: white;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .gallery-item {
+    border-radius: 12px;
+    background: white;
+    height: 200px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    transition: all var(--transition);
+    position: relative;
+    cursor: pointer;
+  }
+  .gallery-item:hover { transform: scale(1.02); box-shadow: 0 16px 48px rgba(0,0,0,0.15); }
+  .gallery-item:first-child { grid-column: span 2; height: 260px; }
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(127,0,0,0.85);
+    color: white;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition);
+    border-radius: 12px;
+    gap: 8px;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay strong { font-size: 15px; font-weight: 700; }
+  .gallery-overlay small { font-size: 12px; opacity: 0.8; }
+
+  /* ─── CTA BANNER ─── */
+  .cta-banner {
+    background: var(--burgundy);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cta-banner p { font-size: 18px; color: rgba(255,255,255,0.75); margin-bottom: 40px; position: relative; }
+  .cta-banner .btn-group { display: flex; gap: 16px; justify-content: center; position: relative; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0a0a0a;
+    color: rgba(255,255,255,0.6);
+    padding: 80px 0 32px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+  .footer-brand .logo-name { color: white; }
+  .footer-brand .logo-sub { color: rgba(255,255,255,0.3); }
+  .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-top: 16px; max-width: 280px; }
+  .footer-col-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 14px; transition: color var(--transition); }
+  .footer-links a:hover { color: white; }
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+  .footer-contact-item .icon { font-size: 16px; margin-top: 1px; }
+  .footer-contact-item span { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-bottom .social-links { margin: 0; }
+
+  /* ─── FLOATING CHAT ─── */
+  .float-actions {
+    position: fixed;
+    bottom: 32px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 900;
+  }
+  .chat-btn {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: all var(--transition);
+    border: none;
+    cursor: pointer;
+  }
+  .chat-btn:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .zalo-btn { background: #0068ff; color: white; }
+  .whatsapp-btn { background: #25d366; color: white; }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: white;
+    border-top: 1px solid var(--gray-200);
+    padding: 20px 24px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    z-index: 999;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; padding: 12px 0; border-bottom: 1px solid var(--gray-100); }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-up { opacity: 0; transform: translateY(32px); transition: all 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { margin: 0; padding: 140px 24px 80px; max-width: 100%; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .process-steps::before { display: none; }
+    .industries-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .blog-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .section { padding: 64px 0; }
+    nav { display: none; }
+    .hamburger { display: flex; }
+    .products-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-column: span 2; }
+    .industries-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .values-grid { grid-template-columns: 1fr; }
+    .cta-banner .btn-group { flex-direction: column; align-items: center; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body class="vi">
+
+<!-- ─── HEADER ─── -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#hero" class="logo">
+      <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="100" rx="12" fill="#7F0000" opacity="0.08"/>
+        <path d="M20 28 L20 64 Q20 76 32 76 L68 76 Q80 76 80 64 L80 28" stroke="#7F0000" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <path d="M20 28 L32 16 L50 28 L68 16 L80 28" stroke="#7F0000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M50 28 L42 44 L50 52 L58 44 Z" stroke="#7F0000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M50 52 L50 76" stroke="#7F0000" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M42 60 L58 60" stroke="#7F0000" stroke-width="3" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-text-wrap">
+        <div class="logo-name">Umee</div>
+        <div class="logo-sub">Uniforms</div>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#about"><span class="vi-inline">Giới thiệu</span><span class="en-inline">About</span></a>
+      <a href="#products"><span class="vi-inline">Sản phẩm</span><span class="en-inline">Products</span></a>
+      <a href="#portfolio"><span class="vi-inline">Dự án</span><span class="en-inline">Portfolio</span></a>
+      <a href="#why"><span class="vi-inline">Vì sao chọn Umee</span><span class="en-inline">Why Umee</span></a>
+      <a href="#process"><span class="vi-inline">Quy trình</span><span class="en-inline">Process</span></a>
+      <a href="#blog"><span class="vi-inline">Tin tức</span><span class="en-inline">Blog</span></a>
+      <a href="#contact"><span class="vi-inline">Liên hệ</span><span class="en-inline">Contact</span></a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="btnVI" onclick="setLang('vi')">VI</button>
+        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#contact" class="btn btn-primary" style="padding:10px 20px;font-size:13px;border-radius:6px;">
+        <span class="vi-inline">Báo giá</span><span class="en-inline">Get Quote</span>
+      </a>
+      <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeMenu()"><span class="vi-inline">Giới thiệu</span><span class="en-inline">About</span></a>
+  <a href="#products" onclick="closeMenu()"><span class="vi-inline">Sản phẩm</span><span class="en-inline">Products</span></a>
+  <a href="#portfolio" onclick="closeMenu()"><span class="vi-inline">Dự án</span><span class="en-inline">Portfolio</span></a>
+  <a href="#why" onclick="closeMenu()"><span class="vi-inline">Vì sao chọn Umee</span><span class="en-inline">Why Umee</span></a>
+  <a href="#process" onclick="closeMenu()"><span class="vi-inline">Quy trình</span><span class="en-inline">Process</span></a>
+  <a href="#blog" onclick="closeMenu()"><span class="vi-inline">Tin tức</span><span class="en-inline">Blog</span></a>
+  <a href="#contact" onclick="closeMenu()"><span class="vi-inline">Liên hệ</span><span class="en-inline">Contact</span></a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-line"></div>
+      <span class="vi-inline">Đồng phục chuyên nghiệp</span>
+      <span class="en-inline">Professional Uniforms</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="vi-inline">Đồng phục Umee –<em>Giải pháp đồng phục<br>chuyên nghiệp</em>cho doanh nghiệp</span>
+      <span class="en-inline">Umee Uniforms –<em>Premium Custom<br>Uniforms</em>for Business</span>
+    </h1>
+    <p class="hero-sub">
+      <span class="vi-inline">Thiết kế và sản xuất đồng phục chất lượng cao theo yêu cầu. Khẳng định thương hiệu – Tạo ấn tượng chuyên nghiệp.</span>
+      <span class="en-inline">Custom uniform design and manufacturing at the highest quality. Define your brand identity with uniforms that make an impression.</span>
+    </p>
+    <div class="hero-btns">
+      <a href="#products" class="btn btn-primary">
+        <span>👔</span>
+        <span class="vi-inline">Xem mẫu</span><span class="en-inline">View Catalog</span>
+      </a>
+      <a href="#contact" class="btn btn-outline">
+        <span class="vi-inline">Nhận báo giá</span><span class="en-inline">Get a Quote</span>
+      </a>
+      <a href="#contact" class="btn" style="background:var(--gray-100);color:var(--black);">
+        <span class="vi-inline">Liên hệ ngay</span><span class="en-inline">Contact Us</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label"><span class="vi-inline">Khách hàng</span><span class="en-inline">Clients</span></div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label"><span class="vi-inline">Năm kinh nghiệm</span><span class="en-inline">Years Experience</span></div>
+      </div>
+      <div>
+        <div class="stat-num">50K+</div>
+        <div class="stat-label"><span class="vi-inline">Sản phẩm</span><span class="en-inline">Uniforms Made</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-visual">
+      <!-- Floating Cards -->
+      <div class="float-card float-card-1">
+        <div class="float-icon">⭐</div>
+        <div class="float-text">
+          <strong>4.9 / 5.0</strong>
+          <small><span class="vi-inline">Đánh giá khách hàng</span><span class="en-inline">Customer Rating</span></small>
+        </div>
+      </div>
+      <div class="float-card float-card-2">
+        <div class="float-icon">⚡</div>
+        <div class="float-text">
+          <strong><span class="vi-inline">Giao hàng nhanh</span><span class="en-inline">Fast Delivery</span></strong>
+          <small><span class="vi-inline">7–14 ngày</span><span class="en-inline">7–14 days</span></small>
+        </div>
+      </div>
+      <div class="float-card float-card-3">
+        <div class="float-icon">🎨</div>
+        <div class="float-text">
+          <strong><span class="vi-inline">Thiết kế riêng</span><span class="en-inline">Custom Design</span></strong>
+          <small><span class="vi-inline">Theo yêu cầu</span><span class="en-inline">On demand</span></small>
+        </div>
+      </div>
+
+      <div class="hero-logo-large">
+        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Main U-shape body -->
+          <path d="M60 80 L60 200 Q60 240 100 240 L200 240 Q240 240 240 200 L240 80" stroke="#7F0000" stroke-width="14" stroke-linecap="round" fill="none"/>
+          <!-- Collar left -->
+          <path d="M60 80 L90 44 L150 80" stroke="#7F0000" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <!-- Collar right -->
+          <path d="M240 80 L210 44 L150 80" stroke="#7F0000" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <!-- Tie left -->
+          <path d="M150 80 L126 128 L150 156" stroke="#7F0000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <!-- Tie right -->
+          <path d="M150 80 L174 128 L150 156" stroke="#7F0000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <!-- Tie bottom -->
+          <path d="M150 156 L150 240" stroke="#7F0000" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <!-- Pocket line -->
+          <path d="M126 185 L174 185" stroke="#7F0000" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <!-- Decorative circles -->
+          <circle cx="150" cy="150" r="120" stroke="#7F0000" stroke-width="1" stroke-dasharray="6 8" opacity="0.15"/>
+          <circle cx="150" cy="150" r="140" stroke="#7F0000" stroke-width="1" opacity="0.06"/>
+        </svg>
+      </div>
+      <div class="hero-caption">UMEE UNIFORMS</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual fade-up">
+        <div class="about-img-main">
+          <div class="about-img-pattern"></div>
+          <span style="position:relative;z-index:1;font-size:80px;">🏭</span>
+        </div>
+        <div class="about-badge-float">
+          <span class="about-badge-num">10+</span>
+          <div class="about-badge-label"><span class="vi-inline">Năm kinh nghiệm</span><span class="en-inline">Years of Experience</span></div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="badge"><span class="vi-inline">Về chúng tôi</span><span class="en-inline">About Us</span></div>
+        <h2 class="section-title">
+          <span class="vi-inline">Umee – Thương hiệu đồng phục uy tín hàng đầu Việt Nam</span>
+          <span class="en-inline">Umee – Vietnam's Premier Uniform Brand</span>
+        </h2>
+        <div class="divider"></div>
+        <p class="section-sub" style="max-width:100%;">
+          <span class="vi-inline">Được thành lập với sứ mệnh mang đến giải pháp đồng phục toàn diện cho các doanh nghiệp Việt Nam và quốc tế, Umee tự hào là đối tác tin cậy của hơn 500 doanh nghiệp từ nhiều lĩnh vực khác nhau.</span>
+          <span class="en-inline">Founded with a mission to deliver comprehensive uniform solutions for Vietnamese and international businesses, Umee is proud to be a trusted partner for over 500 companies across various industries.</span>
+        </p>
+        <br>
+        <p style="font-size:15px;color:var(--gray-600);line-height:1.9;">
+          <span class="vi-inline">Chúng tôi tin rằng đồng phục không chỉ là trang phục – đó là bản sắc thương hiệu, niềm tự hào của đội ngũ và ấn tượng đầu tiên với khách hàng. Mỗi sản phẩm Umee được thiết kế tỉ mỉ, sản xuất bằng chất liệu cao cấp và giao hàng đúng hẹn.</span>
+          <span class="en-inline">We believe uniforms are more than just clothing – they are brand identity, team pride, and the first impression for customers. Every Umee product is meticulously designed, manufactured with premium materials, and delivered on time.</span>
+        </p>
+
+        <div class="values-grid" style="margin-top:32px;">
+          <div class="value-item">
+            <div class="value-title"><span class="vi-inline">🎯 Sứ mệnh</span><span class="en-inline">🎯 Mission</span></div>
+            <div class="value-desc"><span class="vi-inline">Tạo ra đồng phục thể hiện đẳng cấp và bản sắc riêng của từng thương hiệu.</span><span class="en-inline">Creating uniforms that reflect the class and unique identity of each brand.</span></div>
+          </div>
+          <div class="value-item">
+            <div class="value-title"><span class="vi-inline">🔭 Tầm nhìn</span><span class="en-inline">🔭 Vision</span></div>
+            <div class="value-desc"><span class="vi-inline">Trở thành thương hiệu đồng phục số 1 khu vực Đông Nam Á.</span><span class="en-inline">To become the #1 uniform brand in Southeast Asia.</span></div>
+          </div>
+          <div class="value-item">
+            <div class="value-title"><span class="vi-inline">💎 Chất lượng</span><span class="en-inline">💎 Quality</span></div>
+            <div class="value-desc"><span class="vi-inline">Mỗi sản phẩm đều được kiểm định nghiêm ngặt trước khi giao hàng.</span><span class="en-inline">Every product is rigorously inspected before delivery.</span></div>
+          </div>
+          <div class="value-item">
+            <div class="value-title"><span class="vi-inline">🤝 Cam kết</span><span class="en-inline">🤝 Commitment</span></div>
+            <div class="value-desc"><span class="vi-inline">Đồng hành lâu dài cùng khách hàng, hỗ trợ tận tình từ A đến Z.</span><span class="en-inline">Long-term partnership with clients, full support from A to Z.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCTS ─── -->
+<section id="products" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="badge"><span class="vi-inline">Sản phẩm</span><span class="en-inline">Products</span></div>
+      <h2 class="section-title"><span class="vi-inline">Danh mục sản phẩm đồng phục</span><span class="en-inline">Uniform Product Categories</span></h2>
+      <div class="divider"></div>
+      <p class="section-sub"><span class="vi-inline">Đa dạng mẫu mã cho mọi ngành nghề – thiết kế riêng theo thương hiệu của bạn.</span><span class="en-inline">Diverse styles for every industry – custom designed for your brand.</span></p>
+    </div>
+    <div class="products-grid fade-up">
+      <div class="product-card">
+        <div class="product-icon">🏢</div>
+        <div class="product-name"><span class="vi-inline">Đồng phục công sở</span><span class="en-inline">Office Uniforms</span></div>
+        <div class="product-desc"><span class="vi-inline">Sang trọng, chuyên nghiệp, phù hợp môi trường văn phòng hiện đại.</span><span class="en-inline">Elegant, professional – suited for modern office environments.</span></div>
+        <a href="#contact" class="product-link"><span class="vi-inline">Yêu cầu báo giá</span><span class="en-inline">Request Quote</span> →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🍽️</div>
+        <div class="product-name"><span class="vi-inline">Nhà hàng – Khách sạn</span><span class="en-inline">Restaurant & Hotel</span></div>
+        <div class="product-desc"><span class="vi-inline">Lịch sự, tinh tế, nâng cao trải nghiệm khách hàng trong ngành F&B và hospitality.</span><span class="en-inline">Refined and polished – elevating guest experience in F&B and hospitality.</span></div>
+        <a href="#contact" class="product-link"><span class="vi-inline">Yêu cầu báo giá</span><span class="en-inline">Request Quote</span> →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">💆</div>
+        <div class="product-name"><span class="vi-inline">Spa – Thẩm mỹ</span><span class="en-inline">Spa & Beauty</span></div>
+        <div class="product-desc"><span class="vi-inline">Thoải mái, thẩm mỹ – phản ánh phong cách sang trọng của thương hiệu làm đẹp.</span><span class="en-inline">Comfortable and stylish – reflecting the luxury of your beauty brand.</span></div>
+        <a href="#contact" class="product-link"><span class="vi-inline">Yêu cầu báo giá</span><span class="en-inline">Request Quote</span> →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🎒</div>
+        <div class="product-name"><span class="vi-inline">Đồng phục học sinh</span><span class="en-inline">School Uniforms</span></div>
+        <div class="product-desc"><span class="vi-inline">Bền, đẹp, thoáng khí – phù hợp cho mọi lứa tuổi từ mầm non đến THPT.</span><span class="en-inline">Durable, stylish, breathable – for all ages from kindergarten to high school.</span></div>
+        <a href="#contact" class="product-link"><span class="vi-inline">Yêu cầu báo giá</span><span class="en-inline">Request Quote</span> →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🦺</div>
+        <div class="product-name"><span class="vi-inline">Đồng phục bảo hộ</span><span class="en-inline">Safety Uniforms</span></div>
+        <div class="product-desc"><span class="vi-inline">Đáp ứng tiêu chuẩn an toàn lao động, chất liệu bền cao, kết cấu chắc chắn.</span><span class="en-inline">Meets labor safety standards with durable materials and solid construction.</span></div>
+        <a href="#contact" class="product-link"><span class="vi-inline">Yêu cầu báo giá</span><span class="en-inline">Request Quote</span> →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">👕</div>
+        <div class="product-name"><span class="vi-inline">Áo thun đồng phục</span><span class="en-inline">Polo & T-Shirts</span></div>
+        <div class="product-desc"><span class="vi-inline">In thêu logo, đa dạng màu sắc, số lượng linh hoạt từ nhỏ đến lớn.</span><span class="en-inline">Logo embroidery, diverse colors, flexible quantities small or large.</span></div>
+        <a href="#contact" class="product-link"><span class="vi-inline">Yêu cầu báo giá</span><span class="en-inline">Request Quote</span> →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🎉</div>
+        <div class="product-name"><span class="vi-inline">Sự kiện – Team Building</span><span class="en-inline">Events & Team Building</span></div>
+        <div class="product-desc"><span class="vi-inline">Tạo sự đồng nhất, gắn kết đội ngũ trong các sự kiện quan trọng của doanh nghiệp.</span><span class="en-inline">Unify and bond your team for important corporate events.</span></div>
+        <a href="#contact" class="product-link"><span class="vi-inline">Yêu cầu báo giá</span><span class="en-inline">Request Quote</span> →</a>
+      </div>
+      <div class="product-card" style="background:var(--burgundy);cursor:default;">
+        <div class="product-icon" style="background:rgba(255,255,255,0.15);font-size:28px;">✨</div>
+        <div class="product-name" style="color:white;font-size:17px;"><span class="vi-inline">Thiết kế theo yêu cầu</span><span class="en-inline">Fully Custom</span></div>
+        <div class="product-desc" style="color:rgba(255,255,255,0.75);"><span class="vi-inline">Không tìm thấy mẫu phù hợp? Umee sẵn sàng thiết kế riêng 100% theo thương hiệu của bạn.</span><span class="en-inline">Can't find what you need? Umee designs 100% custom uniforms for your brand.</span></div>
+        <a href="#contact" class="product-link" style="color:rgba(255,255,255,0.9);"><span class="vi-inline">Liên hệ ngay</span><span class="en-inline">Contact Now</span> →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INDUSTRIES ─── -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="badge"><span class="vi-inline">Ngành nghề</span><span class="en-inline">Industries</span></div>
+      <h2 class="section-title"><span class="vi-inline">Ngành nghề chúng tôi phục vụ</span><span class="en-inline">Industries We Serve</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="industries-grid fade-up">
+      <div class="industry-card"><span class="industry-icon">🏦</span><div class="industry-name"><span class="vi-inline">Ngân hàng & Tài chính</span><span class="en-inline">Banking & Finance</span></div></div>
+      <div class="industry-card"><span class="industry-icon">🏨</span><div class="industry-name"><span class="vi-inline">Khách sạn & Resort</span><span class="en-inline">Hotels & Resorts</span></div></div>
+      <div class="industry-card"><span class="industry-icon">🏥</span><div class="industry-name"><span class="vi-inline">Y tế & Dược phẩm</span><span class="en-inline">Healthcare & Pharma</span></div></div>
+      <div class="industry-card"><span class="industry-icon">✈️</span><div class="industry-name"><span class="vi-inline">Hàng không</span><span class="en-inline">Aviation</span></div></div>
+      <div class="industry-card"><span class="industry-icon">🏫</span><div class="industry-name"><span class="vi-inline">Giáo dục</span><span class="en-inline">Education</span></div></div>
+      <div class="industry-card"><span class="industry-icon">🛍️</span><div class="industry-name"><span class="vi-inline">Bán lẻ & Thương mại</span><span class="en-inline">Retail & Commerce</span></div></div>
+      <div class="industry-card"><span class="industry-icon">🏗️</span><div class="industry-name"><span class="vi-inline">Xây dựng & Công nghiệp</span><span class="en-inline">Construction & Industry</span></div></div>
+      <div class="industry-card"><span class="industry-icon">💻</span><div class="industry-name"><span class="vi-inline">Công nghệ & Startup</span><span class="en-inline">Tech & Startups</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY UMEE ─── -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="why-grid">
+      <div class="fade-up">
+        <div class="badge" style="background:rgba(127,0,0,0.2);color:rgba(255,100,100,0.9);"><span class="vi-inline">Vì sao chọn chúng tôi</span><span class="en-inline">Why Choose Us</span></div>
+        <h2 class="section-title"><span class="vi-inline">Vì sao hơn 500 doanh nghiệp chọn Umee?</span><span class="en-inline">Why 500+ Businesses Choose Umee?</span></h2>
+        <div class="divider"></div>
+        <p class="section-sub"><span class="vi-inline">Chúng tôi không chỉ bán đồng phục – chúng tôi cung cấp giải pháp hình ảnh thương hiệu toàn diện.</span><span class="en-inline">We don't just sell uniforms – we provide comprehensive brand image solutions.</span></p>
+        <div class="why-list" style="margin-top:40px;">
+          <div class="why-item">
+            <div class="why-num">01</div>
+            <div>
+              <div class="why-item-title"><span class="vi-inline">Chất liệu cao cấp</span><span class="en-inline">Premium Materials</span></div>
+              <div class="why-item-desc"><span class="vi-inline">Sử dụng vải cao cấp nhập khẩu, bền màu, thoáng khí và dễ bảo quản.</span><span class="en-inline">Premium imported fabrics – colorfast, breathable, and easy to maintain.</span></div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">02</div>
+            <div>
+              <div class="why-item-title"><span class="vi-inline">Thiết kế theo yêu cầu</span><span class="en-inline">Custom Design</span></div>
+              <div class="why-item-desc"><span class="vi-inline">Đội ngũ thiết kế chuyên nghiệp, sáng tạo – hoàn thiện mẫu trong 48 giờ.</span><span class="en-inline">Professional, creative design team – sample completion within 48 hours.</span></div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">03</div>
+            <div>
+              <div class="why-item-title"><span class="vi-inline">Giá cạnh tranh</span><span class="en-inline">Competitive Pricing</span></div>
+              <div class="why-item-desc"><span class="vi-inline">Báo giá minh bạch, không phát sinh thêm chi phí ẩn. Chiết khấu hấp dẫn cho đơn hàng lớn.</span><span class="en-inline">Transparent pricing, no hidden costs. Attractive discounts for bulk orders.</span></div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">04</div>
+            <div>
+              <div class="why-item-title"><span class="vi-inline">Sản xuất nhanh</span><span class="en-inline">Fast Production</span></div>
+              <div class="why-item-desc"><span class="vi-inline">Dây chuyền sản xuất hiện đại, xưởng may nội địa – cam kết giao đúng tiến độ.</span><span class="en-inline">Modern production line, in-house factory – committed to on-time delivery.</span></div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">05</div>
+            <div>
+              <div class="why-item-title"><span class="vi-inline">Giao hàng đúng hẹn</span><span class="en-inline">On-Time Delivery</span></div>
+              <div class="why-item-desc"><span class="vi-inline">99% đơn hàng giao đúng hẹn. Cam kết bồi hoàn nếu chậm trễ.</span><span class="en-inline">99% of orders delivered on time. Compensation guaranteed for delays.</span></div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">06</div>
+            <div>
+              <div class="why-item-title"><span class="vi-inline">Tư vấn chuyên nghiệp</span><span class="en-inline">Expert Consultation</span></div>
+              <div class="why-item-desc"><span class="vi-inline">Hỗ trợ từ khâu ý tưởng đến hoàn thiện – tư vấn miễn phí, không áp lực.</span><span class="en-inline">Support from concept to completion – free consultation, no pressure.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual fade-up">
+        <div class="why-big-text">U</div>
+        <div class="why-metric">
+          <div class="why-metric-num">500+</div>
+          <div class="why-metric-label"><span class="vi-inline">Doanh nghiệp tin tưởng</span><span class="en-inline">Businesses trust us</span></div>
+        </div>
+        <div class="why-metric">
+          <div class="why-metric-num">50,000+</div>
+          <div class="why-metric-label"><span class="vi-inline">Sản phẩm đã xuất xưởng</span><span class="en-inline">Uniforms manufactured</span></div>
+        </div>
+        <div class="why-metric">
+          <div class="why-metric-num">99%</div>
+          <div class="why-metric-label"><span class="vi-inline">Giao hàng đúng hẹn</span><span class="en-inline">On-time delivery rate</span></div>
+        </div>
+        <div class="why-metric">
+          <div class="why-metric-num">4.9★</div>
+          <div class="why-metric-label"><span class="vi-inline">Điểm đánh giá trung bình</span><span class="en-inline">Average customer rating</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section id="process" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="badge"><span class="vi-inline">Quy trình</span><span class="en-inline">Process</span></div>
+      <h2 class="section-title"><span class="vi-inline">Quy trình đặt hàng đơn giản</span><span class="en-inline">Simple Ordering Process</span></h2>
+      <div class="divider"></div>
+      <p class="section-sub"><span class="vi-inline">Chỉ 5 bước, Umee đưa ý tưởng của bạn thành đồng phục hoàn chỉnh.</span><span class="en-inline">Just 5 steps – Umee turns your idea into a finished uniform.</span></p>
+    </div>
+    <div class="process-steps fade-up">
+      <div class="process-step">
+        <div class="step-circle">
+          <span class="step-num">1</span>
+          💬
+        </div>
+        <div class="step-title"><span class="vi-inline">Tư vấn</span><span class="en-inline">Consultation</span></div>
+        <div class="step-desc"><span class="vi-inline">Trao đổi yêu cầu, phong cách, số lượng và ngân sách.</span><span class="en-inline">Discuss requirements, style, quantity and budget.</span></div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          <span class="step-num">2</span>
+          ✏️
+        </div>
+        <div class="step-title"><span class="vi-inline">Thiết kế</span><span class="en-inline">Design</span></div>
+        <div class="step-desc"><span class="vi-inline">Đội ngũ thiết kế tạo ra bản mẫu trong 24–48 giờ.</span><span class="en-inline">Design team creates a mockup within 24–48 hours.</span></div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          <span class="step-num">3</span>
+          💰
+        </div>
+        <div class="step-title"><span class="vi-inline">Báo giá</span><span class="en-inline">Quotation</span></div>
+        <div class="step-desc"><span class="vi-inline">Nhận báo giá chi tiết, minh bạch và ký hợp đồng.</span><span class="en-inline">Receive a detailed, transparent quote and sign contract.</span></div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          <span class="step-num">4</span>
+          🏭
+        </div>
+        <div class="step-title"><span class="vi-inline">Sản xuất</span><span class="en-inline">Production</span></div>
+        <div class="step-desc"><span class="vi-inline">Sản xuất với quy trình kiểm soát chất lượng nghiêm ngặt.</span><span class="en-inline">Production with strict quality control at every step.</span></div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          <span class="step-num">5</span>
+          🚚
+        </div>
+        <div class="step-title"><span class="vi-inline">Giao hàng</span><span class="en-inline">Delivery</span></div>
+        <div class="step-desc"><span class="vi-inline">Đóng gói cẩn thận, giao tận nơi, hỗ trợ hậu mãi chu đáo.</span><span class="en-inline">Careful packaging, doorstep delivery, full after-sales support.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PORTFOLIO ─── -->
+<section id="portfolio" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="badge"><span class="vi-inline">Dự án</span><span class="en-inline">Portfolio</span></div>
+      <h2 class="section-title"><span class="vi-inline">Mẫu đã thực hiện</span><span class="en-inline">Our Work</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="gallery-filter fade-up">
+      <button class="filter-btn active" onclick="filterGallery('all', this)"><span class="vi-inline">Tất cả</span><span class="en-inline">All</span></button>
+      <button class="filter-btn" onclick="filterGallery('office', this)"><span class="vi-inline">Công sở</span><span class="en-inline">Office</span></button>
+      <button class="filter-btn" onclick="filterGallery('hotel', this)"><span class="vi-inline">Khách sạn</span><span class="en-inline">Hotel</span></button>
+      <button class="filter-btn" onclick="filterGallery('spa', this)"><span class="vi-inline">Spa</span><span class="en-inline">Spa</span></button>
+      <button class="filter-btn" onclick="filterGallery('school', this)"><span class="vi-inline">Học sinh</span><span class="en-inline">School</span></button>
+      <button class="filter-btn" onclick="filterGallery('event', this)"><span class="vi-inline">Sự kiện</span><span class="en-inline">Events</span></button>
+    </div>
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item" data-cat="office" style="background:linear-gradient(135deg,#f8f7f5,#ede9e3);">
+        🏢
+        <div class="gallery-overlay"><strong><span class="vi-inline">Đồng phục văn phòng</span><span class="en-inline">Office Uniforms</span></strong><small><span class="vi-inline">Tập đoàn ABC</span><span class="en-inline">ABC Corporation</span></small></div>
+      </div>
+      <div class="gallery-item" data-cat="hotel" style="background:linear-gradient(135deg,#fff5f5,#ffe0e0);">
+        🍽️
+        <div class="gallery-overlay"><strong><span class="vi-inline">Đồng phục nhà hàng</span><span class="en-inline">Restaurant Uniforms</span></strong><small>Vinpearl Resort</small></div>
+      </div>
+      <div class="gallery-item" data-cat="spa" style="background:linear-gradient(135deg,#f5f8ff,#e0eaff);">
+        💆
+        <div class="gallery-overlay"><strong><span class="vi-inline">Đồng phục spa</span><span class="en-inline">Spa Uniforms</span></strong><small>Zen Spa</small></div>
+      </div>
+      <div class="gallery-item" data-cat="school" style="background:linear-gradient(135deg,#f5fff5,#e0ffe8);">
+        🎒
+        <div class="gallery-overlay"><strong><span class="vi-inline">Đồng phục học sinh</span><span class="en-inline">School Uniforms</span></strong><small>Trường THPT Quốc tế</small></div>
+      </div>
+      <div class="gallery-item" data-cat="event" style="background:linear-gradient(135deg,#fffff5,#ffffe0);">
+        🎉
+        <div class="gallery-overlay"><strong><span class="vi-inline">Đồng phục sự kiện</span><span class="en-inline">Event Uniforms</span></strong><small><span class="vi-inline">Team Building 2024</span><span class="en-inline">Team Building 2024</span></small></div>
+      </div>
+      <div class="gallery-item" data-cat="office" style="background:linear-gradient(135deg,#fff5fd,#ffe0fa);">
+        🦺
+        <div class="gallery-overlay"><strong><span class="vi-inline">Đồng phục bảo hộ</span><span class="en-inline">Safety Uniforms</span></strong><small><span class="vi-inline">Xưởng sản xuất XYZ</span><span class="en-inline">XYZ Factory</span></small></div>
+      </div>
+      <div class="gallery-item" data-cat="hotel" style="background:linear-gradient(135deg,#f5ffff,#e0f8ff);">
+        🏨
+        <div class="gallery-overlay"><strong><span class="vi-inline">Đồng phục khách sạn</span><span class="en-inline">Hotel Uniforms</span></strong><small>Melia Hotel</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="badge"><span class="vi-inline">Đánh giá</span><span class="en-inline">Testimonials</span></div>
+      <h2 class="section-title"><span class="vi-inline">Khách hàng nói gì về Umee?</span><span class="en-inline">What Clients Say About Umee</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonials-grid fade-up">
+      <div class="testimonial-card">
+        <span class="quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text"><span class="vi-inline">Umee đã thiết kế và sản xuất toàn bộ đồng phục cho chuỗi khách sạn của chúng tôi. Chất lượng vượt mong đợi, giao hàng đúng hẹn và đội ngũ tư vấn rất chuyên nghiệp.</span><span class="en-inline">Umee designed and manufactured all uniforms for our hotel chain. Quality exceeded expectations, delivery was on time, and the consulting team was highly professional.</span></p>
+        <div class="testimonial-author">
+          <div class="author-avatar">N</div>
+          <div>
+            <div class="author-name">Nguyễn Minh Tuấn</div>
+            <div class="author-role">GM – Vinpearl Da Nang Resort</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text"><span class="vi-inline">Chúng tôi đã hợp tác với Umee cho 3 mùa đồng phục liên tiếp. Sự tận tâm và chất lượng nhất quán của họ khiến chúng tôi không cần tìm nhà cung cấp khác.</span><span class="en-inline">We've partnered with Umee for 3 consecutive uniform seasons. Their dedication and consistent quality means we never need to look elsewhere.</span></p>
+        <div class="testimonial-author">
+          <div class="author-avatar">T</div>
+          <div>
+            <div class="author-name">Trần Thị Lan</div>
+            <div class="author-role"><span class="vi-inline">Giám đốc HR – TechCorp Vietnam</span><span class="en-inline">HR Director – TechCorp Vietnam</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text"><span class="vi-inline">Đặt đồng phục cho sự kiện team building 300 người, Umee hoàn thành trong 7 ngày mà chất lượng vẫn đảm bảo. Thực sự ấn tượng!</span><span class="en-inline">Ordered uniforms for a 300-person team building event – Umee delivered in 7 days without compromising quality. Truly impressive!</span></p>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div>
+            <div class="author-name">Phạm Quốc Hùng</div>
+            <div class="author-role"><span class="vi-inline">CEO – Startup XYZ</span><span class="en-inline">CEO – Startup XYZ</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CLIENTS ─── -->
+<div class="clients-bar">
+  <div class="clients-label"><span class="vi-inline">Đối tác & Khách hàng tiêu biểu</span><span class="en-inline">Featured Partners & Clients</span></div>
+  <div class="clients-scroll">
+    <div class="client-logo">Vinpearl</div>
+    <div class="client-logo">Marriott</div>
+    <div class="client-logo">TechCorp VN</div>
+    <div class="client-logo">Vingroup</div>
+    <div class="client-logo">FPT Software</div>
+    <div class="client-logo">Melia Hotels</div>
+    <div class="client-logo">Zen Spa</div>
+    <div class="client-logo">BIDV</div>
+    <div class="client-logo">VinFast</div>
+    <div class="client-logo">Sun Group</div>
+  </div>
+</div>
+
+<!-- ─── BLOG ─── -->
+<section id="blog" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="badge"><span class="vi-inline">Tin tức</span><span class="en-inline">Blog</span></div>
+      <h2 class="section-title"><span class="vi-inline">Xu hướng & Kiến thức đồng phục</span><span class="en-inline">Uniform Trends & Knowledge</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="blog-grid fade-up">
+      <div class="blog-card">
+        <div class="blog-img">
+          <div class="blog-img-bg"></div>
+          <span style="position:relative;z-index:1;">🎨</span>
+          <div class="blog-tag"><span class="vi-inline">Xu hướng</span><span class="en-inline">Trends</span></div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-date">20/03/2025</div>
+          <h3 class="blog-title"><span class="vi-inline">Xu hướng màu sắc đồng phục công sở 2025</span><span class="en-inline">Office Uniform Color Trends for 2025</span></h3>
+          <p class="blog-excerpt"><span class="vi-inline">Khám phá những gam màu nổi bật được các thương hiệu hàng đầu lựa chọn cho đồng phục năm 2025...</span><span class="en-inline">Discover the standout color palettes chosen by leading brands for their 2025 uniforms...</span></p>
+          <a href="#" class="blog-read"><span class="vi-inline">Đọc thêm</span><span class="en-inline">Read More</span> →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img">
+          <div class="blog-img-bg"></div>
+          <span style="position:relative;z-index:1;">🧵</span>
+          <div class="blog-tag"><span class="vi-inline">Chất liệu</span><span class="en-inline">Materials</span></div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-date">15/03/2025</div>
+          <h3 class="blog-title"><span class="vi-inline">Hướng dẫn chọn chất liệu vải phù hợp cho từng ngành</span><span class="en-inline">Guide to Choosing the Right Fabric for Each Industry</span></h3>
+          <p class="blog-excerpt"><span class="vi-inline">Mỗi ngành nghề có những yêu cầu khác nhau về chất liệu. Tìm hiểu cách chọn vải phù hợp...</span><span class="en-inline">Each industry has different material requirements. Learn how to choose the right fabric...</span></p>
+          <a href="#" class="blog-read"><span class="vi-inline">Đọc thêm</span><span class="en-inline">Read More</span> →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img">
+          <div class="blog-img-bg"></div>
+          <span style="position:relative;z-index:1;">🧺</span>
+          <div class="blog-tag"><span class="vi-inline">Bảo quản</span><span class="en-inline">Care Tips</span></div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-date">08/03/2025</div>
+          <h3 class="blog-title"><span class="vi-inline">Mẹo bảo quản đồng phục bền đẹp theo thời gian</span><span class="en-inline">Tips to Keep Your Uniforms Looking Great Over Time</span></h3>
+          <p class="blog-excerpt"><span class="vi-inline">Đồng phục bền đẹp không chỉ phụ thuộc vào chất lượng sản xuất mà còn cách bạn bảo quản...</span><span class="en-inline">Longevity depends not just on manufacturing quality but also how you care for your uniforms...</span></p>
+          <a href="#" class="blog-read"><span class="vi-inline">Đọc thêm</span><span class="en-inline">Read More</span> →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BANNER ─── -->
+<div class="cta-banner">
+  <div class="container">
+    <h2><span class="vi-inline">Sẵn sàng nâng tầm hình ảnh doanh nghiệp?</span><span class="en-inline">Ready to Elevate Your Brand Image?</span></h2>
+    <p><span class="vi-inline">Liên hệ ngay để nhận tư vấn miễn phí và báo giá trong vòng 24 giờ.</span><span class="en-inline">Contact us now for a free consultation and a quote within 24 hours.</span></p>
+    <div class="btn-group">
+      <a href="#contact" class="btn btn-white">
+        <span class="vi-inline">Nhận báo giá miễn phí</span><span class="en-inline">Get Free Quote</span>
+      </a>
+      <a href="tel:+84901234567" class="btn" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.3);">
+        📞 +84 90 123 4567
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="badge"><span class="vi-inline">Liên hệ</span><span class="en-inline">Contact</span></div>
+      <h2 class="section-title"><span class="vi-inline">Liên hệ với chúng tôi</span><span class="en-inline">Get In Touch</span></h2>
+      <div class="divider"></div>
+      <p class="section-sub"><span class="vi-inline">Điền thông tin để nhận tư vấn và báo giá trong vòng 24 giờ làm việc.</span><span class="en-inline">Fill in the form to receive consultation and a quote within 24 business hours.</span></p>
+    </div>
+    <div class="contact-grid fade-up">
+      <div>
+        <div class="contact-info">
+          <h3><span class="vi-inline">Thông tin liên hệ</span><span class="en-inline">Contact Information</span></h3>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label"><span class="vi-inline">Địa chỉ</span><span class="en-inline">Address</span></div>
+              <div class="contact-val"><span class="vi-inline">123 Nguyễn Trọng Tuyển, Phường 8, Quận Phú Nhuận, TP.HCM</span><span class="en-inline">123 Nguyen Trong Tuyen, Ward 8, Phu Nhuan District, Ho Chi Minh City</span></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label"><span class="vi-inline">Điện thoại</span><span class="en-inline">Phone</span></div>
+              <div class="contact-val">+84 90 123 4567</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-val">info@umeeuniforms.vn</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <div class="contact-label"><span class="vi-inline">Giờ làm việc</span><span class="en-inline">Working Hours</span></div>
+              <div class="contact-val"><span class="vi-inline">Thứ 2 – Thứ 7: 8:00 – 18:00</span><span class="en-inline">Mon – Sat: 8:00 AM – 6:00 PM</span></div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-btn" title="Facebook">f</a>
+            <a href="#" class="social-btn" title="Zalo" style="font-size:13px;font-weight:700;">Z</a>
+            <a href="#" class="social-btn" title="Instagram">📷</a>
+            <a href="#" class="social-btn" title="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="map-placeholder">
+          <span>🗺️</span>
+          <span><span class="vi-inline">Bản đồ Google Maps sẽ hiển thị tại đây</span><span class="en-inline">Google Maps will display here</span></span>
+        </div>
+      </div>
+
+      <div>
+        <div class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label><span class="vi-inline">Họ và tên *</span><span class="en-inline">Full Name *</span></label>
+              <input type="text" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="form-group">
+              <label><span class="vi-inline">Điện thoại *</span><span class="en-inline">Phone *</span></label>
+              <input type="tel" placeholder="0901 234 567" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="email@congty.com">
+          </div>
+          <div class="form-group">
+            <label><span class="vi-inline">Tên công ty</span><span class="en-inline">Company Name</span></label>
+            <input type="text" placeholder="Công ty TNHH ...">
+          </div>
+          <div class="form-group">
+            <label><span class="vi-inline">Loại đồng phục</span><span class="en-inline">Uniform Type</span></label>
+            <select>
+              <option value=""><span class="vi-inline">-- Chọn loại đồng phục --</span><span class="en-inline">-- Select uniform type --</span></option>
+              <option><span class="vi-inline">Đồng phục công sở</span><span class="en-inline">Office Uniforms</span></option>
+              <option><span class="vi-inline">Nhà hàng – Khách sạn</span><span class="en-inline">Restaurant & Hotel</span></option>
+              <option><span class="vi-inline">Spa – Thẩm mỹ</span><span class="en-inline">Spa & Beauty</span></option>
+              <option><span class="vi-inline">Đồng phục học sinh</span><span class="en-inline">School Uniforms</span></option>
+              <option><span class="vi-inline">Đồng phục bảo hộ</span><span class="en-inline">Safety Uniforms</span></option>
+              <option><span class="vi-inline">Áo thun – Polo</span><span class="en-inline">T-Shirt & Polo</span></option>
+              <option><span class="vi-inline">Sự kiện – Team Building</span><span class="en-inline">Events & Team Building</span></option>
+              <option><span class="vi-inline">Khác</span><span class="en-inline">Other</span></option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><span class="vi-inline">Số lượng dự kiến</span><span class="en-inline">Estimated Quantity</span></label>
+            <select>
+              <option><span class="vi-inline">Dưới 50 bộ</span><span class="en-inline">Under 50 sets</span></option>
+              <option><span class="vi-inline">50 – 200 bộ</span><span class="en-inline">50 – 200 sets</span></option>
+              <option><span class="vi-inline">200 – 500 bộ</span><span class="en-inline">200 – 500 sets</span></option>
+              <option><span class="vi-inline">Trên 500 bộ</span><span class="en-inline">Over 500 sets</span></option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><span class="vi-inline">Nội dung yêu cầu</span><span class="en-inline">Message</span></label>
+            <textarea placeholder="Mô tả yêu cầu, phong cách, thời gian cần giao hàng..."></textarea>
+          </div>
+          <button type="button" class="form-submit" onclick="handleSubmit()">
+            <span class="vi-inline">📩 Gửi yêu cầu báo giá</span><span class="en-inline">📩 Send Quote Request</span>
+          </button>
+          <div id="formSuccess" style="display:none;background:rgba(127,0,0,0.08);border:1px solid rgba(127,0,0,0.2);border-radius:8px;padding:16px;color:var(--burgundy);font-weight:600;font-size:14px;">
+            <span class="vi-inline">✅ Cảm ơn bạn! Chúng tôi sẽ liên hệ trong vòng 24 giờ.</span><span class="en-inline">✅ Thank you! We'll be in touch within 24 hours.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="text-decoration:none;">
+          <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
+            <rect width="100" height="100" rx="12" fill="#7F0000" opacity="0.15"/>
+            <path d="M20 28 L20 64 Q20 76 32 76 L68 76 Q80 76 80 64 L80 28" stroke="#7F0000" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <path d="M20 28 L32 16 L50 28 L68 16 L80 28" stroke="#7F0000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M50 28 L42 44 L50 52 L58 44 Z" stroke="#7F0000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M50 52 L50 76" stroke="#7F0000" stroke-width="4" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div class="logo-text-wrap" style="margin-left:10px;">
+            <div class="logo-name" style="color:white;">Umee</div>
+            <div class="logo-sub" style="color:rgba(255,255,255,0.35);">Uniforms</div>
+          </div>
+        </div>
+        <p class="footer-tagline"><span class="vi-inline">Thiết kế và sản xuất đồng phục chuyên nghiệp – Khẳng định thương hiệu của bạn với Umee.</span><span class="en-inline">Professional uniform design and manufacturing – Define your brand with Umee.</span></p>
+        <div class="social-links" style="margin-top:20px;">
+          <a href="#" class="social-btn" style="border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);">f</a>
+          <a href="#" class="social-btn" style="border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:13px;font-weight:700;">Z</a>
+          <a href="#" class="social-btn" style="border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);">📷</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title"><span class="vi-inline">Sản phẩm</span><span class="en-inline">Products</span></div>
+        <ul class="footer-links">
+          <li><a href="#products"><span class="vi-inline">Đồng phục công sở</span><span class="en-inline">Office Uniforms</span></a></li>
+          <li><a href="#products"><span class="vi-inline">Nhà hàng – Khách sạn</span><span class="en-inline">Restaurant & Hotel</span></a></li>
+          <li><a href="#products"><span class="vi-inline">Spa – Thẩm mỹ</span><span class="en-inline">Spa & Beauty</span></a></li>
+          <li><a href="#products"><span class="vi-inline">Đồng phục học sinh</span><span class="en-inline">School Uniforms</span></a></li>
+          <li><a href="#products"><span class="vi-inline">Bảo hộ lao động</span><span class="en-inline">Safety Uniforms</span></a></li>
+          <li><a href="#products"><span class="vi-inline">Sự kiện – Team Building</span><span class="en-inline">Events & Team Building</span></a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title"><span class="vi-inline">Công ty</span><span class="en-inline">Company</span></div>
+        <ul class="footer-links">
+          <li><a href="#about"><span class="vi-inline">Giới thiệu</span><span class="en-inline">About Us</span></a></li>
+          <li><a href="#portfolio"><span class="vi-inline">Dự án</span><span class="en-inline">Portfolio</span></a></li>
+          <li><a href="#process"><span class="vi-inline">Quy trình đặt hàng</span><span class="en-inline">Ordering Process</span></a></li>
+          <li><a href="#testimonials"><span class="vi-inline">Đánh giá khách hàng</span><span class="en-inline">Testimonials</span></a></li>
+          <li><a href="#blog"><span class="vi-inline">Tin tức & Blog</span><span class="en-inline">News & Blog</span></a></li>
+          <li><a href="#contact"><span class="vi-inline">Liên hệ</span><span class="en-inline">Contact</span></a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title"><span class="vi-inline">Liên hệ</span><span class="en-inline">Contact</span></div>
+        <div class="footer-contact-item">
+          <span class="icon">📍</span>
+          <span><span class="vi-inline">123 Nguyễn Trọng Tuyển, Q. Phú Nhuận, TP.HCM</span><span class="en-inline">123 Nguyen Trong Tuyen, Phu Nhuan, HCMC</span></span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">📞</span>
+          <span>+84 90 123 4567</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">✉️</span>
+          <span>info@umeeuniforms.vn</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">🕐</span>
+          <span><span class="vi-inline">T2–T7: 8:00–18:00</span><span class="en-inline">Mon–Sat: 8am–6pm</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div style="color:rgba(255,255,255,0.25);font-size:13px;">
+        © 2025 Umee Uniforms. <span class="vi-inline">Bảo lưu mọi quyền.</span><span class="en-inline">All rights reserved.</span>
+      </div>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;"><span class="vi-inline">Chính sách bảo mật</span><span class="en-inline">Privacy Policy</span></a>
+        <a href="#" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;"><span class="vi-inline">Điều khoản sử dụng</span><span class="en-inline">Terms of Service</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── FLOATING CHAT ─── -->
+<div class="float-actions">
+  <a href="https://zalo.me/0901234567" class="chat-btn zalo-btn" title="Zalo" target="_blank">
+    <svg width="26" height="26" viewBox="0 0 100 100" fill="none">
+      <text y="75" font-size="80" fill="white" font-family="Arial" font-weight="bold">Z</text>
+    </svg>
+  </a>
+  <a href="https://wa.me/84901234567" class="chat-btn whatsapp-btn" title="WhatsApp" target="_blank">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  // ─── LANGUAGE SWITCHER ───
+  function setLang(lang) {
+    document.body.className = lang;
+    document.documentElement.lang = lang;
+    document.getElementById('btnVI').classList.toggle('active', lang === 'vi');
+    document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+    localStorage.setItem('umee-lang', lang);
+  }
+
+  // Restore saved language
+  const savedLang = localStorage.getItem('umee-lang');
+  if (savedLang) setLang(savedLang);
+
+  // ─── STICKY HEADER ───
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ─── MOBILE MENU ───
+  function toggleMenu() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileNav').classList.remove('open');
+  }
+
+  // ─── GALLERY FILTER ───
+  function filterGallery(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      if (cat === 'all' || item.dataset.cat === cat) {
+        item.style.display = 'flex';
+        item.style.animation = 'fadeIn 0.4s ease';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  // ─── FORM SUBMIT ───
+  function handleSubmit() {
+    const success = document.getElementById('formSuccess');
+    success.style.display = 'block';
+    setTimeout(() => { success.style.display = 'none'; }, 5000);
+  }
+
+  // ─── FADE UP ANIMATIONS ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = `${(i % 4) * 0.1}s`;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ─── SMOOTH SCROLL ───
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
